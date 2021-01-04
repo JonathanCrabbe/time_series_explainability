@@ -546,7 +546,7 @@ class DeepLiftExplainer:
 
 class IGExplainer:
     def __init__(self, model,activation=torch.nn.Softmax(-1)):
-        self.device = 'cuda'#'cuda' if torch.cuda.is_available() else 'cpu'
+        self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
         self.base_model = model.to(self.device)
         self.base_model.device=self.device
         self.explainer = IntegratedGradients(self.base_model)
@@ -591,7 +591,7 @@ class IGExplainer:
 
 class GradientShapExplainer:
     def __init__(self, model,activation=torch.nn.Softmax(-1)):
-        self.device = 'cuda'#'cuda' if torch.cuda.is_available() else 'cpu'
+        self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
         self.base_model = model.to(self.device)
         self.base_model.device=self.device
         self.explainer = GradientShap(self.base_model)
@@ -657,7 +657,7 @@ class SHAPExplainer:
 
 class LIMExplainer:
     def __init__(self, model, train_loader,activation=torch.nn.Softmax(-1),n_classes=2):
-        self.device = 'cuda' #if torch.cuda.is_available() else 'cpu'
+        self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
         self.base_model = model
         self.base_model.device = self.device
         trainset = list(train_loader.dataset)
